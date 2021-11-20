@@ -1,10 +1,11 @@
+
 !# /bin/bash
 
 #loadkeys uk
 #timedatectl set-ntp true
 #fdisk -l
 #create the partitions and give them a type
-#mkfs.vfat /dev/sda1
+#mkfs.fat -F32 /dev/sda1
 #mkswap /dev/sda2
 #mkfs.ext4 /dev/sda3
 #swapon /dev/sda2
@@ -12,11 +13,11 @@
 #mount root partition before moving on
 #mount /dev/sda3 /mnt
 
-#mount boot partition to /mnt/boot/efi
-#mkdir -p /mnt/boot/efi
-#mount /dev/sda1 /mnt/boot/efi
+#mount boot partition to /mnt/boot/EFI
+#mkdir -p /mnt/boot/EFI
+#mount /dev/sda1 /mnt/boot/EFI
 
-#pactrap /mnt base linux linux-firmware nano
+#pactrap /mnt base linux linux-firmware nano git
 
 #genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -38,11 +39,12 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S sudo man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant dialog linux-headers grub efibootmgr dosfstools mtools os-prober firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion intel-ucode neovim terminator base-devel gcc lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon nemo-fileroller
+pacman -S sudo man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog linux-headers grub efibootmgr dosfstools mtools os-prober firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion intel-ucode neovim terminator base-devel lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon nemo-fileroller
 
 #pacman -S nvidia nvidia-utils nvidia-settings
 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
