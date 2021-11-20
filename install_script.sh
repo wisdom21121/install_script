@@ -1,4 +1,3 @@
-
 !# /bin/bash
 
 #loadkeys uk
@@ -13,11 +12,7 @@
 #mount root partition before moving on
 #mount /dev/sda3 /mnt
 
-#mount boot partition to /mnt/boot/EFI
-#mkdir -p /mnt/boot/EFI
-#mount /dev/sda1 /mnt/boot/EFI
-
-#pactrap /mnt base linux linux-firmware nano git
+#pacstrap /mnt base linux linux-firmware nano git
 
 #genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -43,8 +38,11 @@ pacman -S sudo man-db man-pages texinfo inetutils netctl dhcpcd networkmanager n
 
 #pacman -S nvidia nvidia-utils nvidia-settings
 
+#mount boot partition to /boot/EFI
+mkdir -p /boot/EFI
+mount /dev/sda1 /boot/EFI
 
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
