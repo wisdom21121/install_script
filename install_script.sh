@@ -3,8 +3,9 @@
 #loadkeys uk
 #timedatectl set-ntp true
 #fdisk -l
+
 #create the partitions and give them a type
-#mkfs.fat -F32 /dev/sda1
+#mkfs.vfat /dev/sda1
 #mkswap /dev/sda2
 #mkfs.ext4 /dev/sda3
 #swapon /dev/sda2
@@ -12,9 +13,9 @@
 #mount root partition
 #mount /dev/sda3 /mnt
 
-#mount boot partition to /mnt/boot
-#mkdir -p /mnt/boot
-#mount /dev/sda1 /mnt/boot
+#mount boot partition to /mnt/boot/efi
+#mkdir -p /mnt/boot/efi
+#mount /dev/sda1 /mnt/boot/efi
 
 #pacstrap /mnt base linux base-devel linux-firmware intel-ucode nano git
 
@@ -42,7 +43,7 @@ pacman -S man-db man-pages texinfo inetutils netctl dhcpcd networkmanager networ
 
 #pacman -S nvidia nvidia-utils nvidia-settings
 
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
@@ -53,8 +54,9 @@ systemctl enable lightdm
 #change root password with passwd
 
 #create new user now
-#useradd -m -g wheel <your_user>
-#passwd <your_user>
+#useradd -m -g wheel <user>
+#passwd <user>
+
 #give user access to sudo
 #EDITOR=nano visudo
 #uncomment %wheel ALL=(ALL) ALL
