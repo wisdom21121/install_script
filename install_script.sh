@@ -24,8 +24,8 @@
 #arch-chroot /mnt
 
 #uncomment the locale in /etc/locale.gen
-#generate the locale with locale-gen
 
+locale-gen
 ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 hwclock --systohc
 
@@ -51,7 +51,7 @@ systemctl enable firewalld
 systemctl enable fstrim.timer
 systemctl enable lightdm
 
-#change root password with passwd
+#change root password
 
 #create new user now
 #useradd -m -g wheel <user>
