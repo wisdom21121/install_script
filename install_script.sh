@@ -58,5 +58,5 @@ systemctl enable lightdm
 #passwd <user>
 
 #give user access to sudo
-#EDITOR=nano visudo
+#EDITOR=nvim visudo
 #uncomment %wheel ALL=(ALL) ALL
