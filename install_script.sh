@@ -17,7 +17,7 @@
 #mkdir -p /mnt/boot/efi
 #mount /dev/sda1 /mnt/boot/efi
 
-#pacstrap /mnt base linux base-devel linux-firmware intel-ucode nano git
+#pacstrap /mnt base linux base-devel linux-firmware intel-ucode neovim git
 
 #genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -39,7 +39,7 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog linux-headers grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion neovim terminator lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon nemo-fileroller
+pacman -S man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog linux-headers grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion terminator lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon nemo-fileroller
 
 #pacman -S nvidia nvidia-utils nvidia-settings
 
