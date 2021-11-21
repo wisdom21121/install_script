@@ -12,11 +12,11 @@
 #mount root partition
 #mount /dev/sda3 /mnt
 
-#mount boot partition to /boot/efi
-#mkdir -p /boot/efi
-#mount /dev/sda1 /boot/efi
+#mount boot partition to /mnt/boot
+#mkdir -p /mnt/boot
+#mount /dev/sda1 /mnt/boot
 
-#pacstrap /mnt base linux linux-firmware nano git
+#pacstrap /mnt base linux base-devel linux-firmware intel-ucode nano git
 
 #genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -38,11 +38,11 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S sudo man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog linux-headers grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion intel-ucode neovim terminator base-devel lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon nemo-fileroller
+pacman -S man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog linux-headers grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion neovim terminator lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon nemo-fileroller
 
 #pacman -S nvidia nvidia-utils nvidia-settings
 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
