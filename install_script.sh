@@ -23,6 +23,8 @@
 
 #arch-chroot /mnt
 
+#change root password
+
 #uncomment the locale in /etc/locale.gen
 
 locale-gen
@@ -39,7 +41,10 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog linux-headers grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion terminator lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings cinnamon nemo-fileroller
+pacman -S man-db man-pages texinfo inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog linux-headers grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox vlc
+
+pacman -S sddm plasma-meta kde-applications
+#pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings terminator cinnamon nemo-fileroller viewnior xdg-user-dirs
 
 #pacman -S nvidia nvidia-utils nvidia-settings
 
@@ -49,9 +54,11 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 systemctl enable firewalld
 systemctl enable fstrim.timer
-systemctl enable lightdm
+#systemctl enable lightdm
+systemctl enable sddm
 
-#change root password
+#IMPORTANT - keymap setup after x11 is installed
+#localectl --no-convert set-x11-keymap gb
 
 #create new user now
 #useradd -m -g wheel <user>
