@@ -17,7 +17,7 @@
 #mkdir -p /mnt/boot/efi
 #mount /dev/sda1 /mnt/boot/efi
 
-#pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware intel-ucode neovim git
+#pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware intel-ucode neovim git nano
 
 #genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -41,7 +41,7 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox vlc neofetch htop
+pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox vlc neofetch htop reflector
 
 pacman -S sddm plasma-meta dolphin dolphin-plugins konsole okular gwenview ksnip sweeper
 
@@ -55,13 +55,6 @@ systemctl enable firewalld
 systemctl enable fstrim.timer
 systemctl enable sddm
 
-# Configuring swappiness
-touch /etc/sysctl.d/100-swappiness.conf
-echo "vm.swappiness=10" >> /etc/sysctl.d/100-swappiness.conf
-
-# IMPORTANT - keymap setup after x11 is installed
-#localectl --no-convert set-x11-keymap gb
-
 # Create new user
 #useradd -m -g wheel <user>
 #passwd <user>
@@ -69,3 +62,18 @@ echo "vm.swappiness=10" >> /etc/sysctl.d/100-swappiness.conf
 # Give user access to sudo
 #EDITOR=nvim visudo
 #uncomment %wheel ALL=(ALL) ALL
+
+# IMPORTANT - keymap setup after x11 is installed
+#localectl --no-convert set-x11-keymap gb
+
+# Configuring swappiness
+#touch /etc/sysctl.d/100-swappiness.conf
+#echo "vm.swappiness=10" >> /etc/sysctl.d/100-swappiness.conf
+
+# Manually configure the mirrorlist
+#reflector -c GB -a 12 -p https --sort rate --save /etc/pacman.d/mirrorlist
+
+# Setting default kernel to most recently selected
+#nvim /etc/default/grub
+#change GRUB_DEFAULT=0 to GRUB_DEFAULT=saved
+#uncomment GRUB_SAVEDEFAULT=true
