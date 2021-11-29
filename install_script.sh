@@ -43,7 +43,7 @@ echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
 pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox vlc neofetch htop reflector
 
-pacman -S sddm plasma-meta dolphin dolphin-plugins konsole okular gwenview ksnip sweeper
+pacman -S sddm plasma-meta dolphin dolphin-plugins konsole okular gwenview ksnip sweeper ffmpegthumbs
 
 #pacman -S nvidia nvidia-lts nvidia-utils nvidia-settings
 
