@@ -45,6 +45,7 @@ pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manage
 
 pacman -S sddm plasma-meta dolphin dolphin-plugins konsole okular 
 
+# The dkms module is used if you want more than one kernel installed.
 #pacman -S nvidia nvidia-lts nvidia-dkms nvidia-utils nvidia-settings
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck
