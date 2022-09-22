@@ -17,7 +17,7 @@
 #mkdir -p /mnt/boot/efi
 #mount /dev/sda1 /mnt/boot/efi
 
-#pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware intel-ucode neovim git nano
+#pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-zen linux-zen-headers linux-firmware intel-ucode git nano
 
 #genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -41,9 +41,9 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox vlc mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-emoji gwenview sweeper ffmpegthumbs gparted okular
+pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-emoji gwenview ffmpegthumbs gparted
 
-pacman -S sddm plasma-meta dolphin dolphin-plugins konsole 
+pacman -S sddm plasma-meta dolphin dolphin-plugins konsole okular sweeper
 
 # The dkms module is used if you want more than one kernel installed.
 #pacman -S nvidia nvidia-lts nvidia-dkms nvidia-utils nvidia-settings
@@ -61,7 +61,7 @@ systemctl enable sddm
 #passwd <user>
 
 # Give user access to sudo
-#EDITOR=nvim visudo
+#EDITOR=nano visudo
 #uncomment %wheel ALL=(ALL) ALL
 
 # IMPORTANT - keymap setup after x11 is installed
