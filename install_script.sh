@@ -41,7 +41,7 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-emoji ffmpegthumbs gparted ntfs-3g alacritty
+pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-emoji ffmpegthumbs gparted ntfs-3g alacritty viewnior leafpad
 
 pacman -S sddm plasma-meta dolphin dolphin-plugins okular sweeper gwenview
 
@@ -64,12 +64,13 @@ systemctl enable sddm
 #EDITOR=nvim visudo
 #uncomment %wheel ALL=(ALL) ALL
 
-# IMPORTANT - keymap setup after x11 is installed
-#localectl --no-convert set-x11-keymap gb
-
 # Configuring swappiness
 #touch /etc/sysctl.d/100-swappiness.conf
 #echo "vm.swappiness=10" >> /etc/sysctl.d/100-swappiness.conf
+
+# IMPORTANT!
+# Keymap setup after x11 is installed (restart and boot into system before running this)
+#localectl --no-convert set-x11-keymap gb
 
 # Manually configure the mirrorlist
 #reflector -c GB -a 12 -p https --sort rate --save /etc/pacman.d/mirrorlist
