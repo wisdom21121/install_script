@@ -17,7 +17,7 @@
 #mkdir -p /mnt/boot/efi
 #mount /dev/sda1 /mnt/boot/efi
 
-#pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware intel-ucode git nvim
+#pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware intel-ucode git neovim
 
 #genfstab -U /mnt >> /mnt/etc/fstab
 
