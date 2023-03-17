@@ -41,12 +41,9 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils pulseaudio pavucontrol bash-completion firefox mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-emoji ffmpegthumbs ntfs-3g alacritty
+pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils wget pulseaudio pavucontrol bash-completion firefox mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-emoji ffmpegthumbs ntfs-3g alacritty
 
 pacman -S sddm plasma-meta dolphin dolphin-plugins okular sweeper gwenview ark
-
-# The dkms module is used if you want more than one kernel installed.
-#pacman -S nvidia-dkms nvidia-utils nvidia-settings
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
