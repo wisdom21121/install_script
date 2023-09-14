@@ -5,17 +5,17 @@
 #fdisk -l
 
 #create the partitions and give them a type
-#mkfs.fat -F32 /dev/sda1
-#mkswap /dev/sda2
-#mkfs.ext4 /dev/sda3
-#swapon /dev/sda2
+#mkfs.fat -F32 /dev/nvme0n1p1
+#mkswap /dev/nvme0n1p2
+#mkfs.ext4 /dev/nvme0n1p3
+#swapon /dev/nvme0n1p2
 
 #mount root partition
-#mount /dev/sda3 /mnt
+#mount /dev/nvme0n1p3 /mnt
 
 #mount boot partition to /mnt/boot/efi
 #mkdir -p /mnt/boot/efi
-#mount /dev/sda1 /mnt/boot/efi
+#mount /dev/nvme0n1p1 /mnt/boot/efi
 
 #pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware intel-ucode git neovim
 
@@ -41,9 +41,9 @@ echo "127.0.0.1    localhost" >> /etc/hosts
 echo "::1          localhost" >> /etc/hosts
 echo "127.0.1.1    Arch.localdomain    Arch" >> /etc/hosts
 
-pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils wget pulseaudio pavucontrol bash-completion firefox mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji ffmpegthumbs ntfs-3g unrar alacritty
+pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manager-applet wpa_supplicant wireless_tools dialog grub efibootmgr dosfstools mtools firewalld xorg-server xorg-xinit alsa-utils wget pulseaudio pavucontrol bash-completion firefox mpv neofetch htop reflector python-pip flameshot noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji ffmpegthumbs ntfs-3g unrar
 
-pacman -S sddm plasma-meta dolphin dolphin-plugins okular sweeper gwenview ark
+pacman -S sddm plasma-meta dolphin dolphin-plugins konsole okular sweeper gwenview ark
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
