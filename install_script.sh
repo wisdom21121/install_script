@@ -24,6 +24,7 @@
 #arch-chroot /mnt
 
 #change root password
+#passwd root
 
 #uncomment the locale in /etc/locale.gen
 
