@@ -6,9 +6,7 @@
 
 #create the partitions and give them a type
 #mkfs.fat -F32 /dev/nvme0n1p1
-#mkswap /dev/nvme0n1p2
-#mkfs.ext4 /dev/nvme0n1p3
-#swapon /dev/nvme0n1p2
+#mkfs.ext4 /dev/nvme0n1p2
 
 #mount root partition
 #mount /dev/nvme0n1p3 /mnt
@@ -46,8 +44,8 @@ pacman -S man-db man-pages inetutils netctl dhcpcd networkmanager network-manage
 
 pacman -S sddm plasma-meta dolphin dolphin-plugins konsole
 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
+#grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --recheck
+#grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
 systemctl enable firewalld
